@@ -6,98 +6,59 @@
 :vpi_module "vhdl_sys";
 :vpi_module "v2005_math";
 :vpi_module "va_math";
-S_000000000269de10 .scope module, "test" "test" 2 12;
+S_0000000000856790 .scope module, "test" "test" 2 10;
  .timescale 0 0;
-v00000000026ee940_0 .var "A", 0 0;
-v00000000026ee9e0_0 .var "B", 0 0;
-v00000000026eea80_0 .var "C", 0 0;
-v00000000026eeb20_0 .net "D", 0 0, L_00000000026eec30;  1 drivers
-S_000000000269c620 .scope module, "M" "majority" 2 16, 2 1 0, S_000000000269de10;
+v00000000008aa5c0_0 .var "M", 0 0;
+v00000000008aa660_0 .net "O", 0 0, L_00000000008aa950;  1 drivers
+v00000000008aa700_0 .var "Y", 0 0;
+S_00000000001ed3b0 .scope module, "C" "conditional_inverter" 2 14, 2 1 0, S_0000000000856790;
  .timescale 0 0;
-    .port_info 0 /INPUT 1 "A"
-    .port_info 1 /INPUT 1 "B"
-    .port_info 2 /INPUT 1 "C"
-    .port_info 3 /OUTPUT 1 "O"
-L_000000000269c7a0 .functor AND 1, v00000000026ee940_0, v00000000026ee9e0_0, C4<1>, C4<1>;
-L_000000000269abf0 .functor AND 1, v00000000026ee940_0, v00000000026eea80_0, C4<1>, C4<1>;
-L_0000000002663420 .functor AND 1, v00000000026ee9e0_0, v00000000026eea80_0, C4<1>, C4<1>;
-L_00000000026eebc0 .functor OR 1, L_000000000269c7a0, L_000000000269abf0, C4<0>, C4<0>;
-L_00000000026eec30 .functor OR 1, L_00000000026eebc0, L_0000000002663420, C4<0>, C4<0>;
-v000000000269a4c0_0 .net "A", 0 0, v00000000026ee940_0;  1 drivers
-v0000000002662720_0 .net "B", 0 0, v00000000026ee9e0_0;  1 drivers
-v00000000026627c0_0 .net "C", 0 0, v00000000026eea80_0;  1 drivers
-v0000000002662860_0 .net "O", 0 0, L_00000000026eec30;  alias, 1 drivers
-v0000000002662900_0 .net "q", 0 0, L_00000000026eebc0;  1 drivers
-v00000000026629a0_0 .net "x", 0 0, L_000000000269c7a0;  1 drivers
-v0000000002662a40_0 .net "y", 0 0, L_000000000269abf0;  1 drivers
-v00000000026ee8a0_0 .net "z", 0 0, L_0000000002663420;  1 drivers
-    .scope S_000000000269de10;
+    .port_info 0 /INPUT 1 "Mode"
+    .port_info 1 /INPUT 1 "Y"
+    .port_info 2 /OUTPUT 1 "O"
+L_0000000000856910 .functor AND 1, L_00000000008aa7a0, v00000000008aa700_0, C4<1>, C4<1>;
+L_00000000008aa840 .functor AND 1, v00000000008aa5c0_0, L_00000000008aa8b0, C4<1>, C4<1>;
+L_00000000008aa950 .functor OR 1, L_0000000000856910, L_00000000008aa840, C4<0>, C4<0>;
+v00000000001ed530_0 .net "Mode", 0 0, v00000000008aa5c0_0;  1 drivers
+v00000000001ed5d0_0 .net "O", 0 0, L_00000000008aa950;  alias, 1 drivers
+v00000000001ed670_0 .net "Y", 0 0, v00000000008aa700_0;  1 drivers
+v00000000001ed710_0 .net *"_s1", 0 0, L_00000000008aa7a0;  1 drivers
+v00000000008aa3e0_0 .net *"_s3", 0 0, L_00000000008aa8b0;  1 drivers
+v00000000008aa480_0 .net "x", 0 0, L_0000000000856910;  1 drivers
+v00000000008aa520_0 .net "y", 0 0, L_00000000008aa840;  1 drivers
+L_00000000008aa7a0 .reduce/nor v00000000008aa5c0_0;
+L_00000000008aa8b0 .reduce/nor v00000000008aa700_0;
+    .scope S_0000000000856790;
 T_0 ;
-    %vpi_call 2 20 "$display", "Time A B C D" {0 0 0};
+    %vpi_call 2 18 "$display", "Time M Y O" {0 0 0};
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v00000000026ee940_0, 0, 1;
+    %store/vec4 v00000000008aa5c0_0, 0, 1;
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v00000000026ee9e0_0, 0, 1;
-    %pushi/vec4 0, 0, 1;
-    %store/vec4 v00000000026eea80_0, 0, 1;
+    %store/vec4 v00000000008aa700_0, 0, 1;
     %delay 10, 0;
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v00000000026ee940_0, 0, 1;
-    %pushi/vec4 0, 0, 1;
-    %store/vec4 v00000000026ee9e0_0, 0, 1;
+    %store/vec4 v00000000008aa5c0_0, 0, 1;
     %pushi/vec4 1, 0, 1;
-    %store/vec4 v00000000026eea80_0, 0, 1;
-    %delay 10, 0;
-    %pushi/vec4 0, 0, 1;
-    %store/vec4 v00000000026ee940_0, 0, 1;
-    %pushi/vec4 1, 0, 1;
-    %store/vec4 v00000000026ee9e0_0, 0, 1;
-    %pushi/vec4 0, 0, 1;
-    %store/vec4 v00000000026eea80_0, 0, 1;
-    %delay 10, 0;
-    %pushi/vec4 0, 0, 1;
-    %store/vec4 v00000000026ee940_0, 0, 1;
-    %pushi/vec4 1, 0, 1;
-    %store/vec4 v00000000026ee9e0_0, 0, 1;
-    %pushi/vec4 1, 0, 1;
-    %store/vec4 v00000000026eea80_0, 0, 1;
+    %store/vec4 v00000000008aa700_0, 0, 1;
     %delay 10, 0;
     %pushi/vec4 1, 0, 1;
-    %store/vec4 v00000000026ee940_0, 0, 1;
+    %store/vec4 v00000000008aa5c0_0, 0, 1;
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v00000000026ee9e0_0, 0, 1;
-    %pushi/vec4 0, 0, 1;
-    %store/vec4 v00000000026eea80_0, 0, 1;
+    %store/vec4 v00000000008aa700_0, 0, 1;
     %delay 10, 0;
     %pushi/vec4 1, 0, 1;
-    %store/vec4 v00000000026ee940_0, 0, 1;
-    %pushi/vec4 0, 0, 1;
-    %store/vec4 v00000000026ee9e0_0, 0, 1;
+    %store/vec4 v00000000008aa5c0_0, 0, 1;
     %pushi/vec4 1, 0, 1;
-    %store/vec4 v00000000026eea80_0, 0, 1;
-    %delay 10, 0;
-    %pushi/vec4 1, 0, 1;
-    %store/vec4 v00000000026ee940_0, 0, 1;
-    %pushi/vec4 1, 0, 1;
-    %store/vec4 v00000000026ee9e0_0, 0, 1;
-    %pushi/vec4 0, 0, 1;
-    %store/vec4 v00000000026eea80_0, 0, 1;
-    %delay 10, 0;
-    %pushi/vec4 1, 0, 1;
-    %store/vec4 v00000000026ee940_0, 0, 1;
-    %pushi/vec4 1, 0, 1;
-    %store/vec4 v00000000026ee9e0_0, 0, 1;
-    %pushi/vec4 1, 0, 1;
-    %store/vec4 v00000000026eea80_0, 0, 1;
+    %store/vec4 v00000000008aa700_0, 0, 1;
     %end;
     .thread T_0;
-    .scope S_000000000269de10;
+    .scope S_0000000000856790;
 T_1 ;
-    %vpi_call 2 32 "$monitor", "%4d %b %b %b %b", $time, v00000000026ee940_0, v00000000026ee9e0_0, v00000000026eea80_0, v00000000026eeb20_0 {0 0 0};
+    %vpi_call 2 26 "$monitor", "%4d %b %b %b", $time, v00000000008aa5c0_0, v00000000008aa700_0, v00000000008aa660_0 {0 0 0};
     %end;
     .thread T_1;
 # The file index is used to find the file name in the following table.
 :file_names 3;
     "N/A";
     "<interactive>";
-    "majority.v";
+    "conditional-inverter.v";

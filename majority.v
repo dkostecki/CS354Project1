@@ -11,13 +11,13 @@ endmodule
 
 module test;
 	reg A,B,C; // Reg for inputs 
-	wire D;    // Wire for outputs
+	wire O;    // Wire for outputs
 	
-	majority M(A,B,C,D);
+	majority M(A,B,C,O);
 	
 	initial
 		begin
-			$display("Time A B C D"); 
+			$display("Time A B C O"); 
 			A=0; B=0; C=0; 
 		#10 A=0; B=0; C=1; 
 		#10 A=0; B=1; C=0; 
@@ -29,6 +29,6 @@ module test;
 	end
 
    initial 
-		$monitor("%4d %b %b %b %b",$time,A,B,C,D);
+		$monitor("%4d %b %b %b %b",$time,A,B,C,O);
 
 endmodule
