@@ -1,4 +1,13 @@
-module full_adder_cascading(A,B,S,C);
+module full_adder(X,Y,Z,S,C);
+	input X,Y,Z;
+	output S,C;
+	wire x,y,z;
+	and g1 (x,,Y),
+		g2 (y,Mode,!Y);
+	or	g4 (O,x,y);
+endmodule
+
+module half_adder(A,B,S,C);
 	input A,B;
 	output S,C;
 	xor g1 (S,A,B);
