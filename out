@@ -6,55 +6,120 @@
 :vpi_module "vhdl_sys";
 :vpi_module "v2005_math";
 :vpi_module "va_math";
-S_0000000000905c80 .scope module, "test" "test" 2 8;
+S_000000000085d760 .scope module, "test" "test" 2 17;
  .timescale 0 0;
-v00000000008b78f0_0 .var "A", 0 0;
-v00000000008b7990_0 .var "B", 0 0;
-v00000000009610e0_0 .net "C", 0 0, L_0000000000961220;  1 drivers
-v0000000000961180_0 .net "S", 0 0, L_0000000000906d40;  1 drivers
-S_0000000000906bc0 .scope module, "M" "half_adder" 2 12, 2 1 0, S_0000000000905c80;
+v00000000008b50b0_0 .net "C", 0 0, L_00000000008b5cb0;  1 drivers
+v00000000008b56f0_0 .net "S", 0 0, L_00000000008b5ab0;  1 drivers
+v00000000008b5010_0 .var "X", 0 0;
+v00000000008b4cf0_0 .var "Y", 0 0;
+v00000000008b5150_0 .var "Z", 0 0;
+S_00000000008605d0 .scope module, "M" "add" 2 21, 2 8 0, S_000000000085d760;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "X"
+    .port_info 1 /INPUT 1 "Y"
+    .port_info 2 /INPUT 1 "Z"
+    .port_info 3 /OUTPUT 1 "out1"
+    .port_info 4 /OUTPUT 1 "out3"
+L_00000000008b5cb0 .functor OR 1, L_00000000008b5bb0, L_000000000085d8e0, C4<0>, C4<0>;
+v00000000008b4700_0 .net "X", 0 0, v00000000008b5010_0;  1 drivers
+v00000000008b47a0_0 .net "Y", 0 0, v00000000008b4cf0_0;  1 drivers
+v00000000008b4840_0 .net "Z", 0 0, v00000000008b5150_0;  1 drivers
+v00000000008b48e0_0 .net "c", 0 0, L_000000000085d8e0;  1 drivers
+v00000000008b51f0_0 .net "out1", 0 0, L_00000000008b5ab0;  alias, 1 drivers
+v00000000008b4f70_0 .net "out2", 0 0, L_00000000008b5bb0;  1 drivers
+v00000000008b4b10_0 .net "out3", 0 0, L_00000000008b5cb0;  alias, 1 drivers
+v00000000008b4c50_0 .net "s", 0 0, L_0000000000823220;  1 drivers
+S_000000000098e600 .scope module, "half1" "half_adder" 2 12, 2 1 0, S_00000000008605d0;
  .timescale 0 0;
     .port_info 0 /INPUT 1 "A"
     .port_info 1 /INPUT 1 "B"
     .port_info 2 /OUTPUT 1 "S"
     .port_info 3 /OUTPUT 1 "C"
-L_0000000000906d40 .functor XOR 1, v00000000008b78f0_0, v00000000008b7990_0, C4<0>, C4<0>;
-L_0000000000961220 .functor AND 1, v00000000008b78f0_0, v00000000008b7990_0, C4<1>, C4<1>;
-v00000000008b7670_0 .net "A", 0 0, v00000000008b78f0_0;  1 drivers
-v00000000008b7710_0 .net "B", 0 0, v00000000008b7990_0;  1 drivers
-v00000000008b77b0_0 .net "C", 0 0, L_0000000000961220;  alias, 1 drivers
-v00000000008b7850_0 .net "S", 0 0, L_0000000000906d40;  alias, 1 drivers
-    .scope S_0000000000905c80;
+L_0000000000823220 .functor XOR 1, v00000000008b5010_0, v00000000008b4cf0_0, C4<0>, C4<0>;
+L_000000000085d8e0 .functor AND 1, v00000000008b5010_0, v00000000008b4cf0_0, C4<1>, C4<1>;
+v0000000000860750_0 .net "A", 0 0, v00000000008b5010_0;  alias, 1 drivers
+v000000000098e780_0 .net "B", 0 0, v00000000008b4cf0_0;  alias, 1 drivers
+v000000000098e820_0 .net "C", 0 0, L_000000000085d8e0;  alias, 1 drivers
+v000000000098e8c0_0 .net "S", 0 0, L_0000000000823220;  alias, 1 drivers
+S_00000000008b43a0 .scope module, "half2" "half_adder" 2 13, 2 1 0, S_00000000008605d0;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "A"
+    .port_info 1 /INPUT 1 "B"
+    .port_info 2 /OUTPUT 1 "S"
+    .port_info 3 /OUTPUT 1 "C"
+L_00000000008b5ab0 .functor XOR 1, L_0000000000823220, v00000000008b5150_0, C4<0>, C4<0>;
+L_00000000008b5bb0 .functor AND 1, L_0000000000823220, v00000000008b5150_0, C4<1>, C4<1>;
+v000000000098e960_0 .net "A", 0 0, L_0000000000823220;  alias, 1 drivers
+v00000000008b4520_0 .net "B", 0 0, v00000000008b5150_0;  alias, 1 drivers
+v00000000008b45c0_0 .net "C", 0 0, L_00000000008b5bb0;  alias, 1 drivers
+v00000000008b4660_0 .net "S", 0 0, L_00000000008b5ab0;  alias, 1 drivers
+    .scope S_000000000085d760;
 T_0 ;
-    %vpi_call 2 16 "$display", "Time A B S C" {0 0 0};
+    %vpi_call 2 25 "$display", "Time X Y Z S C" {0 0 0};
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v00000000008b78f0_0, 0, 1;
+    %store/vec4 v00000000008b5010_0, 0, 1;
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v00000000008b7990_0, 0, 1;
+    %store/vec4 v00000000008b4cf0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000000008b5150_0, 0, 1;
     %delay 10, 0;
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v00000000008b78f0_0, 0, 1;
-    %pushi/vec4 1, 0, 1;
-    %store/vec4 v00000000008b7990_0, 0, 1;
-    %delay 10, 0;
-    %pushi/vec4 1, 0, 1;
-    %store/vec4 v00000000008b78f0_0, 0, 1;
+    %store/vec4 v00000000008b5010_0, 0, 1;
     %pushi/vec4 0, 0, 1;
-    %store/vec4 v00000000008b7990_0, 0, 1;
+    %store/vec4 v00000000008b4cf0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000000008b5150_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000000008b5010_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000000008b4cf0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000000008b5150_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000000008b5010_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000000008b4cf0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000000008b5150_0, 0, 1;
     %delay 10, 0;
     %pushi/vec4 1, 0, 1;
-    %store/vec4 v00000000008b78f0_0, 0, 1;
+    %store/vec4 v00000000008b5010_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000000008b4cf0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000000008b5150_0, 0, 1;
+    %delay 10, 0;
     %pushi/vec4 1, 0, 1;
-    %store/vec4 v00000000008b7990_0, 0, 1;
+    %store/vec4 v00000000008b5010_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000000008b4cf0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000000008b5150_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000000008b5010_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000000008b4cf0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000000008b5150_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000000008b5010_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000000008b4cf0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000000008b5150_0, 0, 1;
     %end;
     .thread T_0;
-    .scope S_0000000000905c80;
+    .scope S_000000000085d760;
 T_1 ;
-    %vpi_call 2 24 "$monitor", "%4d %b %b %b %b", $time, v00000000008b78f0_0, v00000000008b7990_0, v0000000000961180_0, v00000000009610e0_0 {0 0 0};
+    %vpi_call 2 37 "$monitor", "%4d %b %b %b %b %b", $time, v00000000008b5010_0, v00000000008b4cf0_0, v00000000008b5150_0, v00000000008b56f0_0, v00000000008b50b0_0 {0 0 0};
     %end;
     .thread T_1;
 # The file index is used to find the file name in the following table.
 :file_names 3;
     "N/A";
     "<interactive>";
-    "1-bit-half-adder.v";
+    "1-bit-full-adder-cascading.v";

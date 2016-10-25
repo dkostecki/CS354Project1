@@ -1,12 +1,3 @@
-module full_adder(X,Y,Z,S,C);
-	input X,Y,Z;
-	output S,C;
-	wire x,y,z;
-	and g1 (x,,Y),
-		g2 (y,Mode,!Y);
-	or	g4 (O,x,y);
-endmodule
-
 module half_adder(A,B,S,C);
 	input A,B;
 	output S,C;
@@ -14,22 +5,35 @@ module half_adder(A,B,S,C);
 	and	g2 (C,A,B);
 endmodule
 
+module add(X,Y,Z,out1,out3);
+	input X,Y,Z;
+	output out1,out2,out3;
+	wire s,c;
+	half_adder 	half1 (X,Y,s,c),
+				half2 (s,Z,out1,out2);
+	or			g3(out3,out2,c);
+endmodule
+
 module test;
-	reg A,B; // Reg for inputs 
+	reg X,Y,Z; // Reg for inputs 
 	wire S,C;    // Wire for outputs
 	
-	full_adder M(A,B,S,C);
+	add M(X,Y,Z,S,C);
 	
 	initial
 		begin
-			$display("Time A B S C"); 
-			A=0; B=0; 
-		#10 A=0; B=1; 
-		#10 A=1; B=0; 
-		#10 A=1; B=1; 
+			$display("Time X Y Z S C"); 
+           X=0; Y=0; Z=0; 
+       #10 X=0; Y=0; Z=1; 
+       #10 X=0; Y=1; Z=0; 
+       #10 X=0; Y=1; Z=1; 
+       #10 X=1; Y=0; Z=0; 
+       #10 X=1; Y=0; Z=1; 
+       #10 X=1; Y=1; Z=0; 
+       #10 X=1; Y=1; Z=1;  
 	end
 
    initial 
-		$monitor("%4d %b %b %b %b",$time,A,B,S,C);
+		$monitor("%4d %b %b %b %b %b",$time,X,Y,Z,S,C);
 
 endmodule
