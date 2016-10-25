@@ -18,7 +18,7 @@ module test;
 	reg A,B; // Reg for inputs 
 	wire S,C;    // Wire for outputs
 	
-	full_adder_cascading M(A,B,S,C);
+	full_adder M(A,B,S,C);
 	
 	initial
 		begin
