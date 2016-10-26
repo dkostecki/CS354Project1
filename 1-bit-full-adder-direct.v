@@ -1,17 +1,14 @@
-module half_adder(A,B,S,C);
-	input A,B;
-	output S,C;
-	xor g1 (S,A,B);
-	and	g2 (C,A,B);
-endmodule
-
-module add(X,Y,Z,out1,out3);
+module add(X,Y,Z,S,C);
 	input X,Y,Z;
-	output out1,out2,out3;
-	wire s,c;
-	half_adder 	half1 (X,Y,s,c),
-				half2 (s,Z,out1,out2);
-	or			g3(out3,out2,c);
+	output S,C;
+	wire a,b,c,d,e;
+	xor		g1(a,X,Y),
+			g2(S,a,Z);
+	and		g3(b,X,Y),
+			g4(c,X,Z),
+			g5(d,Y,Z);
+	or		g6(e,b,c),
+			g7(C,e,d);
 endmodule
 
 module test;
